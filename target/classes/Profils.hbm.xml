@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+      <!-- Mapping for Profils -->
+    <class name="MesBeans.Profils" table="Profils">
+        <id name="idProfil" column="id_profil" type="integer">
+            <generator class="identity"/>
+        </id>
+        <property name="idUtilisateur" column="id_utilisateur" type="integer"/>
+        <property name="competences" column="competences" type="text"/>
+        <property name="experience" column="experience" type="integer"/>
+        <property name="dateCreation" column="date_creation" type="timestamp"/>
+    </class>
+</hibernate-mapping>
+
