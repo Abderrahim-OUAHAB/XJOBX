@@ -71,6 +71,15 @@ public class UpdateProfileServlet extends HttpServlet {
             String photoFileName = Paths.get(photoProfilPart.getSubmittedFileName()).getFileName().toString();
             photoProfil = savePhoto(photoProfilPart, photoFileName);
         }
+        
+         // Traitement de cv
+        Part cvPart = request.getPart("cv");
+        String cv = null;
+        if (cvPart != null && cvPart.getSize() > 0) {
+            // Sauvegarder la photo si elle a été téléchargée
+            String cvFileName = Paths.get(cvPart.getSubmittedFileName()).getFileName().toString();
+            cv = savePhoto(cvPart, cvFileName);
+        }
 
         // Mettre à jour le profil de l'utilisateur dans la base de données
         ProfilDAO profilDao = new ProfilDAO();
@@ -90,6 +99,9 @@ public class UpdateProfileServlet extends HttpServlet {
             profil.setExperience(experience);
            
             profil.setIdUtilisateur(utilisateurId);
+             if (cv != null) {
+                profil.setCv(cv); // Mise à jour de la photo de profil
+            }
             profil.setDateCreation(new Date());
 
             // Sauvegarder les changements dans la base

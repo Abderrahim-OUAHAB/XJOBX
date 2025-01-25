@@ -22,12 +22,7 @@ import java.util.Date;
 @Entity
 @Table(name = "Profils")
 @javax.xml.bind.annotation.XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Profils.findAll", query = "SELECT p FROM Profils p"),
-    @NamedQuery(name = "Profils.findByIdProfil", query = "SELECT p FROM Profils p WHERE p.idProfil = :idProfil"),
-    @NamedQuery(name = "Profils.findByIdUtilisateur", query = "SELECT p FROM Profils p WHERE p.idUtilisateur = :idUtilisateur"),
-    @NamedQuery(name = "Profils.findByExperience", query = "SELECT p FROM Profils p WHERE p.experience = :experience"),
-    @NamedQuery(name = "Profils.findByDateCreation", query = "SELECT p FROM Profils p WHERE p.dateCreation = :dateCreation")})
+
 public class Profils implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -53,7 +48,19 @@ public class Profils implements Serializable {
     @Column(name = "date_creation")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreation;
+ @javax.validation.constraints.Size(max = 255)
+    @Column(name = "cv")
+    private String cv;
 
+    public void setCv(String cv) {
+        this.cv = cv;
+    }
+
+   
+
+    public String getCv() {
+        return cv;
+    }
     public Profils() {
     }
 

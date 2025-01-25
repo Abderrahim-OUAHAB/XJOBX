@@ -21,12 +21,6 @@ import java.util.Date;
 @Entity
 @Table(name = "Offres_Enregistrees")
 @javax.xml.bind.annotation.XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "OffresEnregistrees.findAll", query = "SELECT o FROM OffresEnregistrees o"),
-    @NamedQuery(name = "OffresEnregistrees.findByIdEnregistrement", query = "SELECT o FROM OffresEnregistrees o WHERE o.idEnregistrement = :idEnregistrement"),
-    @NamedQuery(name = "OffresEnregistrees.findByIdUtilisateur", query = "SELECT o FROM OffresEnregistrees o WHERE o.idUtilisateur = :idUtilisateur"),
-    @NamedQuery(name = "OffresEnregistrees.findByIdOffre", query = "SELECT o FROM OffresEnregistrees o WHERE o.idOffre = :idOffre"),
-    @NamedQuery(name = "OffresEnregistrees.findByDateEnregistrement", query = "SELECT o FROM OffresEnregistrees o WHERE o.dateEnregistrement = :dateEnregistrement")})
 public class OffresEnregistrees implements Serializable {
 
     private static final long serialVersionUID = 1L;

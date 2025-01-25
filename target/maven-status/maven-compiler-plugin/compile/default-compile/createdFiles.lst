@@ -8,9 +8,7 @@ Metier/IUtilisateurMetier.class
 Metier/IProfilMetier.class
 MesServlets/LoginServlet.class
 MesBeans/Candidatures.class
-MesServlets/JobOfferController.class
 DAO/CandidatureDAO.class
-MesBeans/AdzunaJobService.class
 Metier/IOffreMetier.class
 MesServlets/AddOfferServlet.class
 Metier/ICandidatureMetier.class
@@ -28,3 +26,4 @@ MesBeans/Profils.class
 Metier/IOffreEnregistreeMetier.class
 MesBeans/Offres.class
 DAO/LikeDAO.class
+MesServlets/LikeServlet.class

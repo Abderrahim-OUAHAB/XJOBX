@@ -5,9 +5,12 @@
 package Metier;
 
 import MesBeans.Likes;
+import java.util.List;
 
 public interface ILikeMetier {
     String addLike(Likes like);
     Likes getLikeById(int id);
     String deleteLike(int id);
+    Likes getLikeByUserAndOffer(int userId, int offreId) ;
+    List<Likes> getLikeByUser(int userId) ;
 }

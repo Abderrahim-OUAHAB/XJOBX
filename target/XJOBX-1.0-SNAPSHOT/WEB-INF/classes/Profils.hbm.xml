@@ -11,6 +11,7 @@
         <property name="idUtilisateur" column="id_utilisateur" type="integer"/>
         <property name="competences" column="competences" type="text"/>
         <property name="experience" column="experience" type="integer"/>
+          <property name="cv" column="cv" type="string"/>
         <property name="dateCreation" column="date_creation" type="timestamp"/>
     </class>
 </hibernate-mapping>

@@ -21,12 +21,6 @@ import java.util.Date;
 @Entity
 @Table(name = "Likes")
 
-@NamedQueries({
-    @NamedQuery(name = "Likes.findAll", query = "SELECT l FROM Likes l"),
-    @NamedQuery(name = "Likes.findByIdLike", query = "SELECT l FROM Likes l WHERE l.idLike = :idLike"),
-    @NamedQuery(name = "Likes.findByIdUtilisateur", query = "SELECT l FROM Likes l WHERE l.idUtilisateur = :idUtilisateur"),
-    @NamedQuery(name = "Likes.findByIdOffre", query = "SELECT l FROM Likes l WHERE l.idOffre = :idOffre"),
-    @NamedQuery(name = "Likes.findByDateLike", query = "SELECT l FROM Likes l WHERE l.dateLike = :dateLike")})
 public class Likes implements Serializable {
 
     private static final long serialVersionUID = 1L;

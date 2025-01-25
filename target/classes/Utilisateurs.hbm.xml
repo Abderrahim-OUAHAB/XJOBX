@@ -13,6 +13,7 @@
         <property name="motDePasse" column="mot_de_passe" type="string"/>
         <property name="role" column="role" type="string"/>
         <property name="photoProfil" column="photo_profil" type="string"/>
+       
         <property name="dateCreation" column="date_creation" type="timestamp"/>
     </class>
 </hibernate-mapping>

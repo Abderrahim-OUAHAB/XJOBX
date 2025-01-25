@@ -21,15 +21,7 @@ import java.util.Date;
 @Entity
 @Table(name = "Utilisateurs")
 @javax.xml.bind.annotation.XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Utilisateurs.findAll", query = "SELECT u FROM Utilisateurs u"),
-    @NamedQuery(name = "Utilisateurs.findByIdUtilisateur", query = "SELECT u FROM Utilisateurs u WHERE u.idUtilisateur = :idUtilisateur"),
-    @NamedQuery(name = "Utilisateurs.findByNom", query = "SELECT u FROM Utilisateurs u WHERE u.nom = :nom"),
-    @NamedQuery(name = "Utilisateurs.findByEmail", query = "SELECT u FROM Utilisateurs u WHERE u.email = :email"),
-    @NamedQuery(name = "Utilisateurs.findByMotDePasse", query = "SELECT u FROM Utilisateurs u WHERE u.motDePasse = :motDePasse"),
-    @NamedQuery(name = "Utilisateurs.findByRole", query = "SELECT u FROM Utilisateurs u WHERE u.role = :role"),
-    @NamedQuery(name = "Utilisateurs.findByPhotoProfil", query = "SELECT u FROM Utilisateurs u WHERE u.photoProfil = :photoProfil"),
-    @NamedQuery(name = "Utilisateurs.findByDateCreation", query = "SELECT u FROM Utilisateurs u WHERE u.dateCreation = :dateCreation")})
+
 public class Utilisateurs implements Serializable {
 
     private static final long serialVersionUID = 1L;

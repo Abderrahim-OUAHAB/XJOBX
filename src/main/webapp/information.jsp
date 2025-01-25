@@ -12,7 +12,7 @@
 </head>
 <body>
   <%@ include file="navbar.jsp" %>
-    <div class="container mt-5">
+    <div class="container mt-5" style="margin-bottom: 100px">
         <div class="row">
             <div class="col-md-4">
                 <!-- Photo de profil -->
@@ -34,6 +34,19 @@
                         <h3>Informations du profil</h3>
                     </div>
                     <div class="card-body">
+                         <h5>
+                             <c:if test="${profil.cv != null}">
+    <strong>
+        <a href="${profil.cv != null ? profil.cv : 'default-avatar.jpg'}" 
+           target="_blank" 
+           class="card-img-top">
+           Voir le CV
+        </a>
+    </strong>
+           </c:if>
+</h5>
+
+                       
                         <h5><strong>Compétences</strong></h5>
                         <p>${profil.competences}</p>
 
@@ -45,11 +58,46 @@
                 <!-- Activités récentes (peut être étendu pour inclure des informations supplémentaires) -->
                 <div class="card">
                     <div class="card-header bg-info text-white">
-                        <h3>Activités récentes</h3>
+                        <h3>Offres Aimés</h3>
                     </div>
-                    <div class="card-body">
-                        <p>Aucune activité récente.</p>
+                    
+                       <c:forEach var="offre" items="${offreLiked}">
+                <div class="col-12 col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">${offre.titre}</h5>
+                            <p class="card-text">${offre.description}</p>
+                           <form action="LikeServlet" method="post" style="display: inline;">
+                            <input type="hidden" name="offreId" value="${offre.idOffre}">
+                            <c:choose>
+                             
+                                <c:when test="${ld.getLikeByUserAndOffer(id_utilisateur,offre.idOffre)!=null}">
+                                    <button type="submit" class="btn btn-danger">
+                                        <i class="fas fa-heart"></i> Unlike
+                                    </button>
+                                </c:when>
+                                <c:otherwise>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-heart"></i> Like
+                                    </button>
+                                </c:otherwise>
+                            </c:choose>
+                        </form>
+                            <button class="btn btn-warning save-btn">
+                                <i class="fas fa-bookmark"></i> Save
+                            </button>
+                            <c:if test="${role == 'recruteur'}">
+                                <hr>
+                               
+                            <form action="deleteOffre" method="post"> <input type="text" value="${offre.idOffre}" hidden name="idOffre"> <button type="submit" class="btn btn-danger save-btn" >
+                                <i class="fas fa-trash"></i> Supprimer
+                                    </button></form>
+                                </c:if>
+                        </div>
                     </div>
+                </div>
+            </c:forEach>
+               
                 </div>
             </div>
         </div>

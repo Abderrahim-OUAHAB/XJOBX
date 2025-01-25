@@ -4,6 +4,7 @@
  */
 package MesServlets;
 
+import DAO.LikeDAO;
 import DAO.OffreDAO;
 import MesBeans.Offres;
 import java.io.IOException;
@@ -34,9 +35,11 @@ public class ListeOffre extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         OffreDAO od=new OffreDAO();
-        
+        LikeDAO ld=new LikeDAO();
         List<Offres> offres=od.getAllOffres();
+     
         request.getSession().setAttribute("offres", offres);
+         request.getSession().setAttribute("ld", ld);
         request.getRequestDispatcher("Offres.jsp").forward(request, response);
         
         

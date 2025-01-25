@@ -21,14 +21,6 @@ import java.util.Date;
 @Entity
 @Table(name = "Candidatures")
 
-@NamedQueries({
-    @NamedQuery(name = "Candidatures.findAll", query = "SELECT c FROM Candidatures c"),
-    @NamedQuery(name = "Candidatures.findByIdCandidature", query = "SELECT c FROM Candidatures c WHERE c.idCandidature = :idCandidature"),
-    @NamedQuery(name = "Candidatures.findByIdUtilisateur", query = "SELECT c FROM Candidatures c WHERE c.idUtilisateur = :idUtilisateur"),
-    @NamedQuery(name = "Candidatures.findByIdOffre", query = "SELECT c FROM Candidatures c WHERE c.idOffre = :idOffre"),
-    @NamedQuery(name = "Candidatures.findByDatePostulation", query = "SELECT c FROM Candidatures c WHERE c.datePostulation = :datePostulation"),
-    @NamedQuery(name = "Candidatures.findByStatut", query = "SELECT c FROM Candidatures c WHERE c.statut = :statut"),
-    @NamedQuery(name = "Candidatures.findByDateCreation", query = "SELECT c FROM Candidatures c WHERE c.dateCreation = :dateCreation")})
 public class Candidatures implements Serializable {
 
     private static final long serialVersionUID = 1L;

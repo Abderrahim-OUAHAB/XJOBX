@@ -4,12 +4,18 @@
  */
 package MesServlets;
 
+import DAO.LikeDAO;
+import DAO.OffreDAO;
 import DAO.ProfilDAO;
 import DAO.UtilisateurDAO;
+import MesBeans.Likes;
+import MesBeans.Offres;
 import MesBeans.Profils;
 import MesBeans.Utilisateurs;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,12 +51,22 @@ public class LoginServlet extends HttpServlet {
         UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
         String result = utilisateurDAO.authentification(utilisateur);
         ProfilDAO profilDao = new ProfilDAO();
+        OffreDAO od=new OffreDAO();
+        LikeDAO ld = new LikeDAO();
         if ("OK".equals(result)) {
            
              Utilisateurs u = utilisateurDAO.getUtilisateurByEmail(email);
              Profils p=profilDao.getProfilByIdUser(u.getIdUtilisateur());
+             List<Likes> ls=ld.getLikeByUser(u.getIdUtilisateur());
+             List<Offres> offresLiked=new ArrayList<>();;
+             if(ls !=null){
+             for(Likes l:ls){
+                 Offres o= od.getOffreById(l.getIdOffre());
+                 offresLiked.add(o);
+             }
+             }
               if(p!=null){
-                  
+                  request.getSession().setAttribute("offreLiked", offresLiked);
                    request.getSession().setAttribute("utilisateur", u);
                    request.getSession().setAttribute("profil", p);
             request.getSession().setAttribute("userConnected", u.getNom());
@@ -58,6 +74,7 @@ public class LoginServlet extends HttpServlet {
               request.getSession().setAttribute("role", u.getRole());
             response.sendRedirect("Home.jsp");
               }else{
+                   request.getSession().setAttribute("offreLiked", offresLiked);
                    request.getSession().setAttribute("profil", p);
                     request.getSession().setAttribute("utilisateur", u);
                    request.getSession().setAttribute("userConnected", u.getNom());

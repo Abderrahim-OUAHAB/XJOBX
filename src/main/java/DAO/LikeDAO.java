@@ -7,6 +7,7 @@ package DAO;
 import Hibernate.HibernateUtil;
 import MesBeans.Likes;
 import Metier.ILikeMetier;
+import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -70,6 +71,33 @@ public class LikeDAO implements ILikeMetier{
     } catch (Exception e) {
         e.printStackTrace(); // Log the exception
         return "KO";
+    }
+    }
+
+    @Override
+    public Likes getLikeByUserAndOffer(int userId, int offreId) {
+         try (Session se = HibernateUtil.getSessionFactory().openSession()) {
+        // Query to find existing like
+        return (Likes) se.createQuery("FROM Likes l WHERE l.idUtilisateur = :idUtilisateur AND l.idOffre = :idOffre")
+                .setParameter("idUtilisateur", userId)
+                .setParameter("idOffre", offreId)
+                .uniqueResult();
+    } catch (Exception e) {
+        e.printStackTrace();
+        return null;
+    }
+    }
+
+    @Override
+    public List<Likes> getLikeByUser(int userId) {
+        try (Session se = HibernateUtil.getSessionFactory().openSession()) {
+        // Query to find existing like
+        return (List<Likes>) se.createQuery("FROM Likes l WHERE l.idUtilisateur = :idUtilisateur")
+                .setParameter("idUtilisateur", userId)
+                .list();
+    } catch (Exception e) {
+        e.printStackTrace();
+        return null;
     }
     }
     

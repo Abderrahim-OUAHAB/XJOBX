@@ -22,13 +22,7 @@ import java.util.Date;
 @Entity
 @Table(name = "Offres")
 
-@NamedQueries({
-    @NamedQuery(name = "Offres.findAll", query = "SELECT o FROM Offres o"),
-    @NamedQuery(name = "Offres.findByIdOffre", query = "SELECT o FROM Offres o WHERE o.idOffre = :idOffre"),
-    @NamedQuery(name = "Offres.findByTitre", query = "SELECT o FROM Offres o WHERE o.titre = :titre"),
-    @NamedQuery(name = "Offres.findByDatePublication", query = "SELECT o FROM Offres o WHERE o.datePublication = :datePublication"),
-    @NamedQuery(name = "Offres.findByIdRecruteur", query = "SELECT o FROM Offres o WHERE o.idRecruteur = :idRecruteur"),
-    @NamedQuery(name = "Offres.findByDateCreation", query = "SELECT o FROM Offres o WHERE o.dateCreation = :dateCreation")})
+
 public class Offres implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -54,7 +54,14 @@
                         <input type="file" class="form-control" id="photoProfil" name="photoProfil">
                         <small>Facultatif. Téléchargez une photo pour votre profil.</small>
                     </div>
-
+                    <c:if test="${role != 'recruteur'}">
+                     <!-- cv -->
+                    <div class="form-group">
+                        <label for="cv">Votre CV</label>
+                        <input type="file" class="form-control" id="cv" name="cv">
+                        <small>Facultatif. Téléchargez votre cv.</small>
+                    </div>
+                     </c:if>
                     <!-- Profil utilisateur -->
                     <div class="form-group">
                         <label for="competences">Compétences</label>

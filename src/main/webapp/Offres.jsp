@@ -49,10 +49,23 @@
                         <div class="card-body">
                             <h5 class="card-title">${offre.titre}</h5>
                             <p class="card-text">${offre.description}</p>
-                            <button class="btn btn-danger like-btn" data-offre-id="${offre.idOffre}">
-                                <i class="fas fa-heart"></i> Like
-                            </button>
-                            <button class="btn btn-warning save-btn" data-offre-id="${offre.idOffre}">
+                           <form action="LikeServlet" method="post" style="display: inline;">
+                            <input type="hidden" name="offreId" value="${offre.idOffre}">
+                            <c:choose>
+                             
+                                <c:when test="${ld.getLikeByUserAndOffer(id_utilisateur,offre.idOffre)!=null}">
+                                    <button type="submit" class="btn btn-danger">
+                                        <i class="fas fa-heart"></i> Unlike
+                                    </button>
+                                </c:when>
+                                <c:otherwise>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-heart"></i> Like
+                                    </button>
+                                </c:otherwise>
+                            </c:choose>
+                        </form>
+                            <button class="btn btn-warning save-btn">
                                 <i class="fas fa-bookmark"></i> Save
                             </button>
                             <c:if test="${role == 'recruteur'}">

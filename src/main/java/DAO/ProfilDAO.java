@@ -62,6 +62,7 @@ public class ProfilDAO implements IProfilMetier {
             // Update user properties
             existingProfil.setIdUtilisateur(profil.getIdUtilisateur());
             existingProfil.setCompetences(profil.getCompetences());
+            existingProfil.setCv(profil.getCv());
             existingProfil.setExperience(profil.getExperience());
             existingProfil.setDateCreation(new Date());
             // Ajoutez d'autres champs nécessaires ici
