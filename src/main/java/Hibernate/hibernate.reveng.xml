@@ -44,7 +44,7 @@ Contributor(s):
   <table-filter match-name="Candidatures"/>
   <table-filter match-name="Likes"/>
    <table-filter match-name="Offres"/>
-  <table-filter match-name="Offres_Enregistrees"/>
+  
    <table-filter match-name="Profils"/>
   <table-filter match-name="Utilisateurs"/>
 </hibernate-reverse-engineering>

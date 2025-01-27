@@ -6,6 +6,8 @@ package DAO;
 
 import Hibernate.HibernateUtil;
 import MesBeans.Candidatures;
+import MesBeans.Likes;
+import MesBeans.Offres;
 import Metier.ICandidatureMetier;
 import java.util.List;
 import org.hibernate.Session;
@@ -53,18 +55,15 @@ public class CandidatureDAO implements ICandidatureMetier{
 
     @Override
     public List<Candidatures> getCandidaturesByUtilisateurId(int utilisateurId) {
-        //Création des paramètres de connexion à la BD
-            Session se = HibernateUtil.getSessionFactory().openSession();
-            Transaction tr = se.beginTransaction();
-            //Obtention d’une occurrence à partir de son identifiant
-            List<Candidatures> candidatures = (List<Candidatures>) se.get(Candidatures.class, utilisateurId);
-            tr.commit();
-            if (candidatures != null) {
-         
-                    return candidatures;
-                } else {
-                    return null;
-                }
+           try (Session se = HibernateUtil.getSessionFactory().openSession()) {
+        // Query to find existing like
+        return (List<Candidatures>) se.createQuery("FROM Candidatures l WHERE l.idUtilisateur = :utilisateurId")
+                .setParameter("utilisateurId", utilisateurId)
+                .list();
+    } catch (Exception e) {
+        e.printStackTrace();
+        return null;
+    }
     }
 
     @Override
@@ -117,6 +116,36 @@ try {
     } catch (Exception e) {
         e.printStackTrace(); // Log the exception
         return "KO";
+    }
+    }
+
+    @Override
+    public Candidatures getCandidatureByUserAndOffer(int userId, int offreId) {
+        try (Session se = HibernateUtil.getSessionFactory().openSession()) {
+        // Query to find existing like
+        return (Candidatures) se.createQuery("FROM Candidatures l WHERE l.idUtilisateur = :idUtilisateur AND l.idOffre = :idOffre")
+                .setParameter("idUtilisateur", userId)
+                .setParameter("idOffre", offreId)
+                .uniqueResult();
+    } catch (Exception e) {
+        e.printStackTrace();
+        return null;
+    }
+    }
+
+    @Override
+    public List<Object[]> getCandidaturesByRecruteurId(int recruteurId) {
+try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        String hql = "SELECT c.idCandidature, c.datePostulation, c.statut, u.nom, u.email, o.titre "
+                + "FROM Candidatures c JOIN Offres o ON c.idOffre = o.idOffre "
+                + "JOIN Utilisateurs u ON c.idUtilisateur = u.idUtilisateur "
+                + "WHERE o.idRecruteur = :recruteurId ";
+
+        return session.createQuery(hql,Object[].class)
+                      .setParameter("recruteurId", recruteurId)
+                      .list();
+    } catch (Exception e) {
+        throw new RuntimeException("Erreur lors de la récupération des candidatures pour le recruteur ID : " + recruteurId, e);
     }
     }
     

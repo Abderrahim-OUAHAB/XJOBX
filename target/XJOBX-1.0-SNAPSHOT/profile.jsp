@@ -65,11 +65,11 @@
                     <!-- Profil utilisateur -->
                     <div class="form-group">
                         <label for="competences">Compétences</label>
-                        <textarea class="form-control" id="competences" name="competences" rows="3" required>${profile.competences}</textarea>
+                        <textarea class="form-control" id="competences" name="competences" rows="3" required>${profil.competences}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="experience">Années d'expérience</label>
-                        <input type="number" class="form-control" id="experience" name="experience" value="${profile.experience}" required>
+                        <input type="number" class="form-control" id="experience" name="experience" value="${profil.experience}" required>
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-block">Mettre à jour le profil</button>

@@ -24,9 +24,6 @@
            <mapping resource="Offres.hbm.xml"/>
         <mapping class="MesBeans.Offres"/>
         
-         <mapping resource="Offres_Enregistrees.hbm.xml"/>
-        <mapping class="MesBeans.OffresEnregistrees"/>
-        
           <mapping resource="Profils.hbm.xml"/>
         <mapping class="MesBeans.Profils"/>
         

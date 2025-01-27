@@ -5,6 +5,7 @@
 package Metier;
 
 import MesBeans.Candidatures;
+import MesBeans.Likes;
 import java.util.List;
 
 public interface ICandidatureMetier {
@@ -13,4 +14,6 @@ public interface ICandidatureMetier {
     List<Candidatures> getCandidaturesByUtilisateurId(int utilisateurId);
     String updateCandidature(Candidatures candidature);
     String deleteCandidature(int id);
+      Candidatures getCandidatureByUserAndOffer(int userId, int offreId) ;
+      List<Object[]> getCandidaturesByRecruteurId(int recruteurId);
 }

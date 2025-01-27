@@ -4,6 +4,7 @@
  */
 package MesServlets;
 
+import DAO.CandidatureDAO;
 import DAO.LikeDAO;
 import DAO.OffreDAO;
 import DAO.ProfilDAO;
@@ -66,8 +67,18 @@ public class LoginServlet extends HttpServlet {
              }
              }
               if(p!=null){
+                  
+   
+        CandidatureDAO cd=new CandidatureDAO();
+        List<Offres> offres=od.getAllOffres();
+     
+        request.getSession().setAttribute("offres", offres);
+         request.getSession().setAttribute("ld", ld);
+         request.getSession().setAttribute("cd", cd);
+            request.getSession().setAttribute("od", od);
                   request.getSession().setAttribute("offreLiked", offresLiked);
                    request.getSession().setAttribute("utilisateur", u);
+                     request.getSession().setAttribute("ud", utilisateurDAO);
                    request.getSession().setAttribute("profil", p);
             request.getSession().setAttribute("userConnected", u.getNom());
              request.getSession().setAttribute("id_utilisateur", u.getIdUtilisateur());

@@ -83,10 +83,25 @@
                                 </c:otherwise>
                             </c:choose>
                         </form>
-                            <button class="btn btn-warning save-btn">
-                                <i class="fas fa-bookmark"></i> Save
+                              <c:if test="${role != 'recruteur'}">
+                           <form action="PostulerServlet" method="post" style="display: inline;">
+                            <input type="hidden" name="offreId" value="${offre.idOffre}">
+                            <c:choose>
+                             
+                                <c:when test="${cd.getCandidatureByUserAndOffer(id_utilisateur,offre.idOffre)!=null}">
+                                    <button class="btn btn-warning save-btn">
+                                <i class="fas fa-bookmark"></i> Annuler
                             </button>
-                            <c:if test="${role == 'recruteur'}">
+                                </c:when>
+                                <c:otherwise>
+                                    <button class="btn btn-warning save-btn">
+                                <i class="fas fa-bookmark"></i> Postuler
+                            </button>
+                                </c:otherwise>
+                            </c:choose>
+                        </form>
+                              </c:if>
+                            <c:if test="${role == 'recruteur' && od.getOffreByUserIdAndOffre(id_utilisateur,offre.idOffre)!=null}">
                                 <hr>
                                
                             <form action="deleteOffre" method="post"> <input type="text" value="${offre.idOffre}" hidden name="idOffre"> <button type="submit" class="btn btn-danger save-btn" >

@@ -3,9 +3,12 @@
 /Users/minfo/Documents/XJOBX/src/main/java/DAO/UtilisateurDAO.java
 /Users/minfo/Documents/XJOBX/src/main/java/MesServlets/UpdateProfileServlet.java
 /Users/minfo/Documents/XJOBX/src/main/java/MesServlets/AddOfferServlet.java
+/Users/minfo/Documents/XJOBX/src/main/java/MesServlets/RejterPostulation.java
+/Users/minfo/Documents/XJOBX/src/main/java/MesServlets/AccepterPostulation.java
 /Users/minfo/Documents/XJOBX/src/main/java/Metier/IOffreMetier.java
 /Users/minfo/Documents/XJOBX/src/main/java/MesServlets/ListeOffre.java
 /Users/minfo/Documents/XJOBX/src/main/java/Metier/ILikeMetier.java
+/Users/minfo/Documents/XJOBX/src/main/java/MesServlets/PostulerServlet.java
 /Users/minfo/Documents/XJOBX/src/main/java/MesBeans/Likes.java
 /Users/minfo/Documents/XJOBX/src/main/java/MesServlets/LikeServlet.java
 /Users/minfo/Documents/XJOBX/src/main/java/Hibernate/HibernateUtil.java
@@ -23,7 +26,6 @@
 /Users/minfo/Documents/XJOBX/src/main/java/com/xjobx/xjobx/JakartaRestConfiguration.java
 /Users/minfo/Documents/XJOBX/src/main/java/MesServlets/LoginServlet.java
 /Users/minfo/Documents/XJOBX/src/main/java/MesServlets/LogoutServlet.java
-/Users/minfo/Documents/XJOBX/src/main/java/MesBeans/OffresEnregistrees.java
-/Users/minfo/Documents/XJOBX/src/main/java/DAO/OffreEnregistreeDAO.java
-/Users/minfo/Documents/XJOBX/src/main/java/Metier/IOffreEnregistreeMetier.java
+/Users/minfo/Documents/XJOBX/src/main/java/MesServlets/ListePostulation.java
+/Users/minfo/Documents/XJOBX/src/main/java/MesServlets/AnnulerPostulation.java
 /Users/minfo/Documents/XJOBX/src/main/java/DAO/LikeDAO.java

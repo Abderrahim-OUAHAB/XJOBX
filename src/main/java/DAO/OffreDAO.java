@@ -5,6 +5,7 @@
 package DAO;
 
 import Hibernate.HibernateUtil;
+import MesBeans.Likes;
 import MesBeans.Offres;
 import Metier.IOffreMetier;
 import java.util.List;
@@ -117,5 +118,19 @@ public class OffreDAO implements IOffreMetier {
         e.printStackTrace(); // Log the exception
         return "KO";
     }    }
+
+    @Override
+    public Offres getOffreByUserIdAndOffre(int userId,int offerId) {
+            try (Session se = HibernateUtil.getSessionFactory().openSession()) {
+        // Query to find existing like
+        return (Offres) se.createQuery("FROM Offres l WHERE l.idRecruteur = :idRecruteur AND l.idOffre = :idOffre")
+                .setParameter("idRecruteur", userId)
+                .setParameter("idOffre", offerId)
+                .uniqueResult();
+    } catch (Exception e) {
+        e.printStackTrace();
+        return null;
+    }
+    }
     
 }

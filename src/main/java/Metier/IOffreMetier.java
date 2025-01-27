@@ -10,6 +10,7 @@ import java.util.List;
 public interface IOffreMetier {
     String addOffre(Offres offre);
     Offres getOffreById(int id);
+    Offres getOffreByUserIdAndOffre(int useriId,int offerId);
     List<Offres> getAllOffres();
     String updateOffre(Offres offre);
     String deleteOffre(int id);

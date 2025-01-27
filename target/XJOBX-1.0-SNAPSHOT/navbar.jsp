@@ -28,6 +28,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="ListeOffre">Offres d'emploi</a>
                 </li>
+                
+                  <li class="nav-item">
+                    <a class="nav-link" href="ListePostulation">Postulation</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="information.jsp">Mon Profil</a>
                 </li>
