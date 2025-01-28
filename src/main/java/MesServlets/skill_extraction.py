@@ -52,7 +52,7 @@ def suggest_jobs(cv_path, job_descriptions, threshold=0.5):
 if __name__ == "__main__":
     cv_path = sys.argv[1]
     job_descriptions = sys.argv[2].split("||")  # Sépare les descriptions (au cas où vous voulez utiliser la similarité)
-    threshold = 0.2  # Définir un seuil de similarité (par exemple 0.5)
+    threshold = 0.07  # Définir un seuil de similarité (par exemple 0.5)
 
     suggested_ids = suggest_jobs(cv_path, job_descriptions, threshold)
 

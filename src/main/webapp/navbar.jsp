@@ -4,7 +4,7 @@
         <a class="navbar-brand" href="Home.jsp">
             <img src="images/logo2.webp" alt="XJOBX Logo" width="50" height="50"> <c:choose>
     <c:when test="${userConnected != null}">
-        HI ${userConnected}
+        HI ${utilisateur.nom}
     </c:when>
     <c:otherwise>
         XJOBX
@@ -22,9 +22,11 @@
                            <% 
         if (session.getAttribute("userConnected") != null) { // Si l'utilisateur est connecté
     %>
+    
                 <li class="nav-item">
                     <a class="nav-link" href="SkillExtractionServlet">Accueil</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="ListeOffre">Offres d'emploi</a>
                 </li>

@@ -93,7 +93,12 @@ public class UpdateProfileServlet extends HttpServlet {
                 utilisateur.setPhotoProfil(photoProfil); // Mise à jour de la photo de profil
             }
 
-            // Mettre à jour le profil
+            
+            // Sauvegarder les changements dans la base
+            utilisateurDAO.updateUtilisateur(utilisateur);
+            Profils pr=profilDao.getProfilByIdUser(utilisateurId);
+            if(pr==null){
+                // Mettre à jour le profil
             Profils profil = new Profils();
             profil.setCompetences(competences);
             profil.setExperience(experience);
@@ -104,16 +109,23 @@ public class UpdateProfileServlet extends HttpServlet {
             }
             profil.setDateCreation(new Date());
 
-            // Sauvegarder les changements dans la base
-            utilisateurDAO.updateUtilisateur(utilisateur);
-            if(profilDao.getProfilByIdUser(utilisateurId)==null){
                  profilDao.addProfil(profil);
+                  request.getSession().setAttribute("profil", profil);
             }else{
-            profilDao.updateProfil(profil);
+                 pr.setCompetences(competences);
+            pr.setExperience(experience);
+           
+            pr.setIdUtilisateur(utilisateurId);
+             if (cv != null) {
+                pr.setCv(cv); // Mise à jour de la photo de profil
+            }
+            pr.setDateCreation(new Date());
+            profilDao.updateProfil(pr);
+             request.getSession().setAttribute("profil", pr);
             }
             
             request.getSession().setAttribute("utilisateur", utilisateur);
-             request.getSession().setAttribute("profil", profil);
+            
             response.sendRedirect("information.jsp");
         } else {
             request.setAttribute("error", "Erreur lors de la mise à jour du profil.");

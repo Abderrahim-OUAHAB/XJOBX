@@ -83,7 +83,7 @@ public class LoginServlet extends HttpServlet {
             request.getSession().setAttribute("userConnected", u.getNom());
              request.getSession().setAttribute("id_utilisateur", u.getIdUtilisateur());
               request.getSession().setAttribute("role", u.getRole());
-            response.sendRedirect("Home.jsp");
+            response.sendRedirect("SkillExtractionServlet");
               }else{
                    request.getSession().setAttribute("offreLiked", offresLiked);
                    request.getSession().setAttribute("profil", p);

@@ -106,7 +106,7 @@ public class ProfilDAO implements IProfilMetier {
             Session se = HibernateUtil.getSessionFactory().openSession();
             Transaction tr = se.beginTransaction();
             //Obtention d’une occurrence à partir de son identifiant
-        Profils user = (Profils) se.createQuery("SELECT p FROM Profils p WHERE p.idUtilisateur = :idUtilisateur")
+        Profils user = (Profils) se.createQuery("FROM Profils p WHERE p.idUtilisateur = :idUtilisateur")
                                           .setParameter("idUtilisateur", id)
                                           .uniqueResult();
             tr.commit();

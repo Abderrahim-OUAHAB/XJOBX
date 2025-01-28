@@ -21,6 +21,10 @@ public class SkillExtractionServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String role = (String) request.getSession().getAttribute("role");
+        if("chercheur_emploi".equals(role)){
+            
+        
   Profils profil = (Profils) request.getSession().getAttribute("profil");
         String cvPath = profil.getCv(); // Chemin du CV
 
@@ -64,6 +68,7 @@ public class SkillExtractionServlet extends HttpServlet {
 
         // Passer les suggestions d'offres à la JSP
         request.getSession().setAttribute("suggestedOffres", suggestedOffres);
+        }
         request.getRequestDispatcher("Home.jsp").forward(request, response);
     }
 
