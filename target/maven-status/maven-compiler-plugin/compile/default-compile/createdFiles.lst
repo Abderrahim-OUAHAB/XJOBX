@@ -21,6 +21,7 @@ Metier/ILikeMetier.class
 MesServlets/deleteOffre.class
 MesServlets/AnnulerPostulation.class
 MesServlets/ListeOffre.class
+MesServlets/SkillExtractionServlet.class
 com/xjobx/xjobx/resources/JakartaEE8Resource.class
 MesServlets/ListePostulation.class
 MesBeans/Utilisateurs.class

@@ -132,5 +132,18 @@ public class OffreDAO implements IOffreMetier {
         return null;
     }
     }
+
+    @Override
+    public Offres getAllOffresByCompetence(String compt) {
+          try (Session se = HibernateUtil.getSessionFactory().openSession()) {
+        // Query to find existing like
+        return (Offres) se.createQuery("FROM Offres l WHERE l.competences = :competences")
+                .setParameter("competences", compt)
+                .uniqueResult();
+    } catch (Exception e) {
+        e.printStackTrace();
+        return null;
+    }
+    }
     
 }

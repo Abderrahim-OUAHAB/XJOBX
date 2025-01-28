@@ -23,7 +23,7 @@
         if (session.getAttribute("userConnected") != null) { // Si l'utilisateur est connecté
     %>
                 <li class="nav-item">
-                    <a class="nav-link" href="Home.jsp">Accueil</a>
+                    <a class="nav-link" href="SkillExtractionServlet">Accueil</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="ListeOffre">Offres d'emploi</a>

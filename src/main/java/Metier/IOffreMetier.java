@@ -12,6 +12,7 @@ public interface IOffreMetier {
     Offres getOffreById(int id);
     Offres getOffreByUserIdAndOffre(int useriId,int offerId);
     List<Offres> getAllOffres();
+    Offres getAllOffresByCompetence(String compt);
     String updateOffre(Offres offre);
     String deleteOffre(int id);
 }

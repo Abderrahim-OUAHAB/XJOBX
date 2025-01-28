@@ -17,10 +17,34 @@
     </head>
     <body>
         <%@ include file="navbar.jsp" %>
-        <div class="container mt-5">
-        <h2 class="text-center">Bienvenue sur votre tableau de bord</h2>
-        
+        <form method="get" action="SkillExtractionServlet">
+         <div class="container mt-4">
+        <h1>Suggestions d'Offres Basées sur vos Compétences</h1>
+        <c:if test="${not empty suggestedOffres}">
+            <div class="row">
+                <c:forEach var="offre" items="${suggestedOffres}">
+                    <c:if test="${not empty offre}">
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">${offre.titre}</h5>
+                                <p class="card-text">${offre.description}</p>
+                                <p class="card-text"><strong>Compétences:</strong> ${offre.competences}</p>
+                                <a href="#" class="btn btn-primary">Voir Détails</a>
+                            </div>
+                        </div>
+                    </div>
+                             </c:if>
+                </c:forEach>
+            </div>
+        </c:if>
+
+        <c:if test="${empty suggestedOffres}">
+            <p>Aucune suggestion trouvée.</p>
+        </c:if>
     </div>
+
+            </form>
           <%@ include file="footer.jsp" %>
     </body>
 </html>
