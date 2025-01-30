@@ -119,7 +119,7 @@ public class UpdateProfileServlet extends HttpServlet {
              if (cv != null) {
                 pr.setCv(cv); // Mise à jour de la photo de profil
             }
-            pr.setDateCreation(new Date());
+        
             profilDao.updateProfil(pr);
              request.getSession().setAttribute("profil", pr);
             }

@@ -1,21 +1,38 @@
-<%@ page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Home</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Offres</title>
+        <!-- Liens CSS externes -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
         <style>
-            /* Disposition des cartes */
+            /* General styles */
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #ecf0f1;
+                color: #2c3e50;
+                margin: 0;
+                padding: 0;
+            }
+
+            .container {
+                margin-top: 50px;
+            }
+
             .card {
-                border: 1px solid #ddd;
                 border-radius: 10px;
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                margin-bottom: 30px;
+                background-color: #fff;
+                border: none;
                 transition: transform 0.3s ease, box-shadow 0.3s ease;
-                margin-bottom: 20px;
             }
 
             .card:hover {
@@ -23,102 +40,216 @@
                 box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             }
 
+            .card-header {
+                background-color: #3498db;
+                color: white;
+                border-radius: 10px 10px 0 0;
+                padding: 15px;
+                font-weight: bold;
+                font-size: 1.2rem;
+            }
+
             .card-body {
                 padding: 20px;
             }
 
-            .card-title {
-                font-size: 1.25rem;
-                font-weight: bold;
+            .card-body h5 {
+                font-size: 1.1rem;
                 margin-bottom: 15px;
-                color: #333;
             }
 
-            .card-text {
+            .card-body p {
                 font-size: 1rem;
-                color: #555;
-                line-height: 1.5;
+                color: #7f8c8d;
             }
 
-            .row {
-                margin-top: 20px;
+            .btn {
+                border-radius: 5px;
+                padding: 10px;
+                font-size: 1rem;
+                cursor: pointer;
+                transition: background-color 0.3s;
             }
 
             .btn-primary {
-                background-color: #007bff;
-                border-color: #007bff;
-                padding: 10px 20px;
-                text-transform: uppercase;
-                font-weight: bold;
-                border-radius: 5px;
+                background-color: #3498db;
+                color: white;
+                border: none;
             }
 
             .btn-primary:hover {
-                background-color: #0056b3;
-                border-color: #004085;
+                background-color: #2980b9;
             }
 
-            /* Style pour la phrase de bienvenue et le logo */
-            .welcome-section {
-                text-align: center;
-                margin-bottom: 40px;
-                padding: 20px;
-                background-color: #f8f9fa;
-                border-radius: 8px;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            .btn-danger {
+                background-color: #e74c3c;
+                color: white;
+                border: none;
             }
 
-            .welcome-section h2 {
-                font-size: 2rem;
-                font-weight: bold;
-                color: #333;
+            .btn-danger:hover {
+                background-color: #c0392b;
             }
 
-            .welcome-section img {
-                width: 250px; /* Ajustez la taille de votre logo */
-                margin-top: 15px;
-                border-radius: 1000px;
+            .btn-warning {
+                background-color: #f39c12;
+                color: white;
+                border: none;
+            }
+
+            .btn-warning:hover {
+                background-color: #e67e22;
+            }
+
+      /* Section de bienvenue */
+    .welcome-section {
+        text-align: center;
+        background-color: #f0f8ff;
+        border-radius: 10px;
+        padding: 50px 30px;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+        margin-top: 40px;
+        transition: all 0.3s ease;
+    }
+
+    .welcome-section:hover {
+        box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+        transform: translateY(-5px);
+    }
+
+    .welcome-section h2 {
+        font-size: 2.5rem;
+        color: #2c3e50;
+        font-weight: 700;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .welcome-section h2 span {
+        color: #3498db;
+    }
+
+    .welcome-section img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-top: 20px;
+        border: 5px solid #3498db;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .welcome-section img:hover {
+        transform: scale(1.1);
+    }
+
+    /* Effet de survol pour le texte */
+    .welcome-section h2 {
+        transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    .welcome-section h2:hover {
+        color: #2980b9;
+        text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+        .welcome-section {
+            padding: 30px 20px;
+        }
+
+        .welcome-section h2 {
+            font-size: 2rem;
+        }
+
+        .welcome-section img {
+            width: 120px;
+            height: 120px;
+        }
+    
+
+            /* Layout for offers */
+            .row {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+
+            .col-md-4 {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 20px;
+            }
+
+            /* Button floating */
+            .btn-floating {
+                position: fixed;
+                bottom: 80px;
+                right: 20px;
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 24px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                z-index: 1000;
+            }
+
+            /* Responsive design */
+            @media (max-width: 768px) {
+                .col-md-4 {
+                    width: 100%;
+                    margin-bottom: 20px;
+                }
+
+                .container {
+                    margin-top: 30px;
+                }
             }
         </style>
     </head>
     <body>
         <%@ include file="navbar.jsp" %>
 
-        <!-- Section de bienvenue avec le logo -->
+        <!-- Welcome Section -->
         <div class="welcome-section">
             <h2>Bienvenue sur XJOBX !</h2>
-            <!-- Remplacez "logo.png" par le chemin de votre logo -->
             <img src="images/logo1.webp" alt="Logo de la plateforme">
         </div>
 
         <c:if test="${role != 'recruteur'}">
-            <div class="container mt-4" style="margin-bottom: 100px">
-                <h1>Suggestions d'Offres Basées sur vos Compétences</h1>
-                <c:if test="${not empty suggestedOffres}">
-                    <div class="row">
-                        <c:forEach var="offre" items="${suggestedOffres}">
-                            <c:if test="${not empty offre}">
-                                <div class="col-md-4">
-                                    <div class="card mb-4">
-                                        <div class="card-body">
-                                            <h5 class="card-title">${offre.titre}</h5>
-                                            <p class="card-text">${offre.description}</p>
-                                            <p class="card-text"><strong>Compétences:</strong> ${offre.competences}</p>
-                                            <a href="#" class="btn btn-primary">Voir Détails</a>
-                                        </div>
-                                    </div>
+            <div class="container">
+                <div class="row">
+                    <c:forEach var="offre" items="${suggestedOffres}">
+                        <div class="col-12 col-md-4">
+                            <div class="card">
+                                <div class="card-header" style="text-align:center">
+                                    ${offre.titre}
                                 </div>
-                            </c:if>
-                        </c:forEach>
-                    </div>
-                </c:if>
-
-                <c:if test="${empty suggestedOffres}">
-                    <p>Aucune suggestion trouvée.</p>
-                </c:if>
+                                <div class="card-body" style="text-align:center">
+                                    <a href="detailsOffre.jsp?idOffre=${offre.idOffre}" class="btn btn-info" style="font-size: 14px">
+                                        <i class="fas fa-eye"></i> Voir Détails
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
             </div>
         </c:if>
 
+     
+
         <%@ include file="footer.jsp" %>
+
+        <!-- JS Scripts -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>

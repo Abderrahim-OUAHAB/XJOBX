@@ -163,22 +163,22 @@
                 <c:forEach var="offre" items="${offres}">
                     <div class="col-12 col-md-4">
                         <div class="card">
-                            <div class="card-header">
+                            <div class="card-header" style="text-align:center">
                                 ${offre.titre}
                             </div>
-                            <div class="card-body">
-                                <h5 class="card-title">${offre.titre}</h5>
-                                <p class="card-text">${offre.description}</p>
-                                <form action="LikeServlet" method="post" style="display: inline;">
+                            <div class="card-body" style="text-align:center">
+                              
+                               
+                                <form action="LikeServlet" method="post" style="display: inline-block;">
                                     <input type="hidden" name="offreId" value="${offre.idOffre}">
                                     <c:choose>
                                         <c:when test="${ld.getLikeByUserAndOffer(id_utilisateur,offre.idOffre)!=null}">
-                                            <button type="submit" class="btn btn-danger">
+                                            <button type="submit" class="btn btn-danger" style="font-size: 14px">
                                                 <i class="fas fa-heart"></i> Unlike
                                             </button>
                                         </c:when>
                                         <c:otherwise>
-                                            <button type="submit" class="btn btn-primary">
+                                            <button type="submit" class="btn btn-primary" style="font-size: 14px">
                                                 <i class="fas fa-heart"></i> Like
                                             </button>
                                         </c:otherwise>
@@ -186,16 +186,16 @@
                                 </form>
 
                                 <c:if test="${role != 'recruteur'}">
-                                    <form action="PostulerServlet" method="post" style="display: inline;">
+                                    <form action="PostulerServlet" method="post" style="display: inline-block;">
                                         <input type="hidden" name="offreId" value="${offre.idOffre}">
                                         <c:choose>
                                             <c:when test="${cd.getCandidatureByUserAndOffer(id_utilisateur,offre.idOffre)!=null}">
-                                                <button class="btn btn-warning save-btn">
+                                                <button class="btn btn-warning save-btn" style="font-size: 14px">
                                                     <i class="fas fa-bookmark"></i> Annuler
                                                 </button>
                                             </c:when>
                                             <c:otherwise>
-                                                <button class="btn btn-warning save-btn">
+                                                <button class="btn btn-warning save-btn" style="font-size: 15px">
                                                     <i class="fas fa-bookmark"></i> Postuler
                                                 </button>
                                             </c:otherwise>
@@ -204,14 +204,21 @@
                                 </c:if>
 
                                 <c:if test="${role == 'recruteur' && od.getOffreByUserIdAndOffre(id_utilisateur,offre.idOffre)!=null}">
-                                    <hr>
-                                    <form action="deleteOffre" method="post">
-                                        <input type="text" value="${offre.idOffre}" hidden name="idOffre">
-                                        <button type="submit" class="btn btn-danger save-btn">
+                                 
+                                    <form action="deleteOffre" method="post" style="display: inline-block;">
+                                        <input type="text" value="${offre.idOffre}" hidden name="idOffre" style="display: none">
+                                        <button type="submit" class="btn btn-danger save-btn" style="font-size: 14px">
                                             <i class="fas fa-trash"></i> Supprimer
                                         </button>
                                     </form>
+                                        
+     
+
                                 </c:if>
+                                    
+                                                                       <a href="detailsOffre.jsp?idOffre=${offre.idOffre}" class="btn btn-info" style="font-size: 14px">
+    <i class="fas fa-eye"></i> Voir Détails
+</a>
                             </div>
                         </div>
                     </div>
