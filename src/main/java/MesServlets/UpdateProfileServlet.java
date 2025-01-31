@@ -1,7 +1,12 @@
 package MesServlets;
 
+import DAO.CandidatureDAO;
+import DAO.LikeDAO;
+import DAO.OffreDAO;
 import DAO.ProfilDAO;
+import DAO.ReponseDAO;
 import DAO.UtilisateurDAO;
+import MesBeans.Offres;
 import MesBeans.Profils;
 import MesBeans.Utilisateurs;
 import java.io.IOException;
@@ -11,6 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Date;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -123,7 +129,18 @@ public class UpdateProfileServlet extends HttpServlet {
             profilDao.updateProfil(pr);
              request.getSession().setAttribute("profil", pr);
             }
-            
+             OffreDAO od=new OffreDAO();
+        LikeDAO ld=new LikeDAO();
+        CandidatureDAO cd=new CandidatureDAO();
+        List<Offres> offres=od.getAllOffres();
+     
+        request.getSession().setAttribute("offres", offres);
+         ReponseDAO reponseDAO = new ReponseDAO();
+  request.getSession().setAttribute("reponseDAO", reponseDAO);
+         request.getSession().setAttribute("ld", ld);
+         request.getSession().setAttribute("cd", cd);
+            request.getSession().setAttribute("od", od);
+             request.getSession().setAttribute("ud", utilisateurDAO);
             request.getSession().setAttribute("utilisateur", utilisateur);
             
             response.sendRedirect("information.jsp");

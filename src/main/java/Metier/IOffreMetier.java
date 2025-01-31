@@ -15,4 +15,5 @@ public interface IOffreMetier {
     Offres getAllOffresByCompetence(String compt);
     String updateOffre(Offres offre);
     String deleteOffre(int id);
+    List<Offres> rechercherOffres(String titre, String competences, String recruteur);
 }

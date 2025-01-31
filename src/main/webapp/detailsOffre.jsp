@@ -28,6 +28,7 @@
         // Récupération des commentaires pour cette offre
         List<Commentaires> commentaires = commentaireDAO.getCommentairesByOffreId(idOffre);
         request.setAttribute("commentaires", commentaires);
+         request.setAttribute("offre", offre);
     }
 
     // Vérifier si l'utilisateur est un recruteur
@@ -147,7 +148,7 @@
     <c:if test="<%= offre != null %>">
         <div class="mb-3">
             <label class="form-label">Recruteur</label>
-            <p class="form-control"><%= user.getNom() %> a publié cette offre le <%= offre.getDatePublication() %></p>
+            <p class="form-control"> <img src="${ud.getUtilisateurById(offre.idRecruteur).photoProfil}" style="width:23px;height: 23px;margin-right: 10px;border-radius: 1000px;border:2px solid black"/><%= user.getNom() %> a publié cette offre le <%= offre.getDatePublication() %></p>
         </div>
         <div class="mb-3">
             <label class="form-label">Titre de l'Offre</label>

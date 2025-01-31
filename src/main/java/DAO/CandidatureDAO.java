@@ -59,7 +59,7 @@ public class CandidatureDAO implements ICandidatureMetier{
         // Query to find existing like
         return (List<Candidatures>) se.createQuery("FROM Candidatures l WHERE l.idUtilisateur = :utilisateurId")
                 .setParameter("utilisateurId", utilisateurId)
-                .list();
+                .list().reversed();
     } catch (Exception e) {
         e.printStackTrace();
         return null;
@@ -143,7 +143,7 @@ try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 
         return session.createQuery(hql,Object[].class)
                       .setParameter("recruteurId", recruteurId)
-                      .list();
+                      .list().reversed();
     } catch (Exception e) {
         throw new RuntimeException("Erreur lors de la récupération des candidatures pour le recruteur ID : " + recruteurId, e);
     }

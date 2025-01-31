@@ -94,7 +94,7 @@ public class LikeDAO implements ILikeMetier{
         // Query to find existing like
         return (List<Likes>) se.createQuery("FROM Likes l WHERE l.idUtilisateur = :idUtilisateur")
                 .setParameter("idUtilisateur", userId)
-                .list();
+                .list().reversed();
     } catch (Exception e) {
         e.printStackTrace();
         return null;

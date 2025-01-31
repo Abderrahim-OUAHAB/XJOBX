@@ -34,7 +34,7 @@ public class ReponseDAO implements IReponseMetier {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             return session.createQuery("FROM Reponses r WHERE r.idCommentaire = :idCommentaire")
                     .setParameter("idCommentaire", idCommentaire)
-                    .list();
+                    .list().reversed();
         }
     }
 

@@ -34,7 +34,7 @@ public class CommentaireDAO implements ICommentaireMetier {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             return session.createQuery("FROM Commentaires c WHERE c.idOffre = :idOffre")
                     .setParameter("idOffre", idOffre)
-                    .list();
+                    .list().reversed();
         }
     }
 

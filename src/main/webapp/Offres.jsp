@@ -159,16 +159,35 @@
         <%@ include file="navbar.jsp" %>
 
         <div class="container">
+            <div class="container mt-3">
+    <form action="FltreOffre" method="get" class="row g-3">
+        <div class="col-md-4">
+            <input type="text" name="titre" class="form-control" placeholder="Rechercher par titre" value="${titre}">
+        </div>
+        <div class="col-md-4">
+            <input type="text" name="competences" class="form-control" placeholder="Rechercher par compétences" value="${competences}">
+        </div>
+        <div class="col-md-4">
+            <input type="text" name="recruteur" class="form-control" placeholder="Rechercher par recruteur" value="${recruteur}">
+        </div>
+        <div class="col-md-12 text-center" style="margin-bottom:20px">
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-search"></i> Rechercher
+            </button>
+        </div>
+    </form>
+</div>
+
             <div class="row">
                 <c:forEach var="offre" items="${offres}">
                     <div class="col-12 col-md-4">
                         <div class="card">
                             <div class="card-header" style="text-align:center">
-                                ${offre.titre}
+                              <img src="${ud.getUtilisateurById(offre.idRecruteur).photoProfil}" style="width:50px;height: 50px;margin-right: 10px;border-radius: 1000px;border:2px solid black"/>  ${ud.getUtilisateurById(offre.idRecruteur).nom}
                             </div>
                             <div class="card-body" style="text-align:center">
                               
-                               
+                                <strong>    ${offre.titre} <br> <hr></strong>
                                 <form action="LikeServlet" method="post" style="display: inline-block;">
                                     <input type="hidden" name="offreId" value="${offre.idOffre}">
                                     <c:choose>

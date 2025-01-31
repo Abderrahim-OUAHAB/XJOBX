@@ -126,7 +126,7 @@
 
 <body>
     <%@ include file="navbar.jsp" %>
-
+ <c:if test="${not empty candidatures}">
     <div class="container mt-5">
         
 
@@ -183,7 +183,12 @@
             </tbody>
         </table>
     </div>
-
+ </c:if>
+     <c:if test="${empty candidatures}">
+         <div class="alert alert-danger" role="alert" style="text-align: center">
+                            <strong>Pas encore de postulation !</strong>
+                        </div>
+                    </c:if>
     <%@ include file="footer.jsp" %>
 <!-- JS Scripts -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

@@ -11,6 +11,7 @@ import Metier.IOffreMetier;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 /**
  *
@@ -58,7 +59,7 @@ public class OffreDAO implements IOffreMetier {
         Transaction tr = se.beginTransaction();
 
         // Retrieve all users
-        List<Offres> offres = se.createQuery("from Offres", Offres.class).list();
+        List<Offres> offres = se.createQuery("from Offres", Offres.class).list().reversed();
         tr.commit();
         return offres;
     } catch (Exception e) {
@@ -144,6 +145,43 @@ public class OffreDAO implements IOffreMetier {
         e.printStackTrace();
         return null;
     }
+    }
+
+    @Override
+    public List<Offres> rechercherOffres(String titre, String competences, String recruteur) {
+   Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        
+        // Construction dynamique de la requête HQL
+        String hql = "FROM Offres o WHERE 1=1";
+        if (titre != null && !titre.isEmpty()) {
+            hql += " AND o.titre LIKE :titre";
+        }
+        if (competences != null && !competences.isEmpty()) {
+            hql += " AND o.competences LIKE :competences";
+        }
+        if (recruteur != null && !recruteur.isEmpty()) {
+            hql += " AND o.idRecruteur IN (SELECT u.idUtilisateur FROM Utilisateurs u WHERE u.nom LIKE :recruteur)";
+        }
+
+        Query<Offres> query = session.createQuery(hql, Offres.class);
+        
+        // Passage des paramètres
+        if (titre != null && !titre.isEmpty()) {
+            query.setParameter("titre", "%" + titre + "%");
+        }
+        if (competences != null && !competences.isEmpty()) {
+            query.setParameter("competences", "%" + competences + "%");
+        }
+        if (recruteur != null && !recruteur.isEmpty()) {
+            query.setParameter("recruteur", "%" + recruteur + "%");
+        }
+
+        List<Offres> offres = query.list().reversed();
+        transaction.commit();
+        session.close();
+        
+        return offres;
     }
     
 }

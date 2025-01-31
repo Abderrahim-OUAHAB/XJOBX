@@ -85,6 +85,17 @@ public class LoginServlet extends HttpServlet {
               request.getSession().setAttribute("role", u.getRole());
             response.sendRedirect("SkillExtractionServlet");
               }else{
+                CandidatureDAO cd=new CandidatureDAO();
+         request.getSession().setAttribute("ld", ld);
+         request.getSession().setAttribute("cd", cd);
+            request.getSession().setAttribute("od", od);
+                  request.getSession().setAttribute("offreLiked", offresLiked);
+                   request.getSession().setAttribute("utilisateur", u);
+                     request.getSession().setAttribute("ud", utilisateurDAO);
+                   request.getSession().setAttribute("profil", p);
+            request.getSession().setAttribute("userConnected", u.getNom());
+             request.getSession().setAttribute("id_utilisateur", u.getIdUtilisateur());
+              request.getSession().setAttribute("role", u.getRole());
                    request.getSession().setAttribute("offreLiked", offresLiked);
                    request.getSession().setAttribute("profil", p);
                     request.getSession().setAttribute("utilisateur", u);

@@ -224,15 +224,17 @@
         </div>
 
         <c:if test="${role != 'recruteur'}">
-            <div class="container">
+            <div class="container" style="margin-bottom:50px">
                 <div class="row">
                     <c:forEach var="offre" items="${suggestedOffres}">
                         <div class="col-12 col-md-4">
                             <div class="card">
                                 <div class="card-header" style="text-align:center">
-                                    ${offre.titre}
+                                                                  <img src="${ud.getUtilisateurById(offre.idRecruteur).photoProfil}" style="width:50px;height: 50px;margin-right: 10px;border-radius: 1000px;border:2px solid black"/>  ${ud.getUtilisateurById(offre.idRecruteur).nom}
+                                   
                                 </div>
                                 <div class="card-body" style="text-align:center">
+                                      <strong>    ${offre.titre} <br> <hr></strong>
                                     <a href="detailsOffre.jsp?idOffre=${offre.idOffre}" class="btn btn-info" style="font-size: 14px">
                                         <i class="fas fa-eye"></i> Voir Détails
                                     </a>
