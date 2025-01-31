@@ -47,4 +47,7 @@ Contributor(s):
   
    <table-filter match-name="Profils"/>
   <table-filter match-name="Utilisateurs"/>
+  
+   <table-filter match-name="Commentaires"/>
+   <table-filter match-name="Reponses"/>
 </hibernate-reverse-engineering>

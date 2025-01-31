@@ -4,13 +4,13 @@
  */
 package MesServlets;
 
-import DAO.CandidatureDAO;
-import DAO.LikeDAO;
-import DAO.OffreDAO;
+import DAO.CommentaireDAO;
 import DAO.ReponseDAO;
-import MesBeans.Offres;
+import MesBeans.Commentaires;
+import MesBeans.Reponses;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,8 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author minfo
  */
-@WebServlet(name = "ListeOffre", urlPatterns = {"/ListeOffre"})
-public class ListeOffre extends HttpServlet {
+@WebServlet(name = "AddReponseServlet", urlPatterns = {"/AddReponseServlet"})
+public class AddReponseServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,20 +36,46 @@ public class ListeOffre extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        OffreDAO od=new OffreDAO();
-        LikeDAO ld=new LikeDAO();
-        CandidatureDAO cd=new CandidatureDAO();
-        List<Offres> offres=od.getAllOffres();
-     
-        request.getSession().setAttribute("offres", offres);
-         ReponseDAO reponseDAO = new ReponseDAO();
+     String message;
+
+        try {
+            // Retrieve form data
+            String contenu = request.getParameter("contenu");
+            int idCommentaire = Integer.parseInt(request.getParameter("idCommentaire"));
+                 int idUser = (Integer)request.getSession().getAttribute("id_utilisateur");
+           int idOffre = Integer.parseInt(request.getParameter("idOffre"));
+           
+
+            // Create an Offres object
+            Reponses comment = new Reponses();
+           comment.setContenu(contenu);
+           comment.setDateReponse(new Date());
+           comment.setIdCommentaire(idCommentaire);
+           comment.setIdUtilisateur(idUser);
+           
+
+            // Save the offer using OffreDAO
+            ReponseDAO dao = new ReponseDAO();
+            String result = dao.addReponse(comment);
+
+            if ("OK".equals(result)) {
+                message = "Offre ajoutée avec succès.";
+                   // Pass the message to the JSP page
+                    
+  ReponseDAO reponseDAO = new ReponseDAO();
   request.getSession().setAttribute("reponseDAO", reponseDAO);
-         request.getSession().setAttribute("ld", ld);
-         request.getSession().setAttribute("cd", cd);
-            request.getSession().setAttribute("od", od);
-        request.getRequestDispatcher("Offres.jsp").forward(request, response);
-        
-        
+ request.setAttribute("idOffre", idOffre);
+        request.setAttribute("message", message);
+        request.getRequestDispatcher("detailsOffre.jsp").forward(request, response);
+            } else {
+                message = "Erreur lors de l'ajout !";
+                   // Pass the message to the JSP page
+        request.setAttribute("message", message);
+        request.getRequestDispatcher("addOffer.jsp").forward(request, response);
+            }
+        } catch (NumberFormatException e) {
+            message = "Erreur : " + e.getMessage();
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

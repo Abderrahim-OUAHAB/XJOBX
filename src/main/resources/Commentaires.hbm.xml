@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="MesBeans.Commentaires" table="Commentaires">
+        <id name="idCommentaire" column="id_commentaire" type="integer">
+            <generator class="identity"/>
+        </id>
+        <property name="idUtilisateur" column="id_utilisateur" type="integer"/>
+        <property name="idOffre" column="id_offre" type="integer"/>
+        <property name="contenu" column="contenu" type="text"/>
+        <property name="dateCommentaire" column="date_commentaire" type="timestamp"/>
+    </class>
+</hibernate-mapping>

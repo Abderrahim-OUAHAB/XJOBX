@@ -27,5 +27,11 @@
           <mapping resource="Profils.hbm.xml"/>
         <mapping class="MesBeans.Profils"/>
         
+        
+          <mapping resource="Commentaires.hbm.xml"/>
+        <mapping class="MesBeans.Commentaires"/>
+        
+          <mapping resource="Reponses.hbm.xml"/>
+        <mapping class="MesBeans.Reponses"/>
     </session-factory>
 </hibernate-configuration>

@@ -215,7 +215,7 @@
      
 
                                 </c:if>
-                                    
+                                  
                                                                        <a href="detailsOffre.jsp?idOffre=${offre.idOffre}" class="btn btn-info" style="font-size: 14px">
     <i class="fas fa-eye"></i> Voir Détails
 </a>

@@ -8,5 +8,7 @@
     <class>MesBeans.Utilisateurs</class>
     <class>MesBeans.Profils</class>
     <class>MesBeans.Likes</class>
+    <class>MesBeans.Commentaires</class>
+    <class>MesBeans.Reponses</class>
   </persistence-unit>
 </persistence>
